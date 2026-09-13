@@ -1,4 +1,4 @@
-# Kubernetes Cluster Setup with Kubeadm
+# Building Kubernetes Cluster from scratch using Kubeadm
 
 A hands-on guide for building a small Kubernetes cluster from scratch using `kubeadm`.
 
