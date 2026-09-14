@@ -828,6 +828,50 @@ Then run the new command on the worker.
 
 ---
 
+Yes — you have **three** practical problems documented. If you want to paste them **at the very bottom of your existing `## 17. Common Problems` section**, use this exactly:
+
+````markdown
+---
+
+### `kubeadm join` fails with `user is not running as root`
+
+If you run the `kubeadm join` command without `sudo`, you may see:
+
+```text
+[ERROR IsPrivilegedUser]: user is not running as root
+````
+
+Run the join command with `sudo`:
+
+```bash
+sudo kubeadm join <control-plane-ip>:6443 \
+  --token <token> \
+  --discovery-token-ca-cert-hash sha256:<hash>
+```
+
+`kubeadm join` requires root privileges because it needs to configure the worker node and kubelet.
+
+---
+
+### `kubeadm join` gets stuck at `Running pre-flight checks`
+
+Sometimes the join command may appear to hang at:
+
+```text
+[preflight] Running pre-flight checks
+```
+
+Check the AWS Security Group rules and make sure the worker can communicate with the control plane.
+
+For this lab, all three nodes use the same Security Group:
+
+| Type        | Protocol | Port | Source                                 |
+| ----------- | -------- | ---: | -------------------------------------- |
+| SSH         | TCP      |   22 | My IP                                  |
+| All traffic | All      |  All | `sg-0123456789abcdef` (Security Group) |
+
+---
+
 ## 18. Cleaning Up
 
 If you are finished with the lab, you can reset the Kubernetes installation.
