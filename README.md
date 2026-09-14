@@ -196,6 +196,13 @@ At minimum, you need:
 
 For a temporary learning environment, allowing traffic from the same security group is a simple approach.
 
+Importanat Note: All nodes must attached to same security group for this lab. And traffic must be allowed for the nodes from this same security group like below example
+
+Type          Protocol    Port      Source
+---------------------------------------------------------
+SSH           TCP         22        My IP
+All traffic   All         All       sg-0123456789abcdef [security Group Id]
+
 Do not blindly copy this model into production. In a real environment, restrict traffic to the ports and sources actually required by your cluster.
 
 After the instances are running, record their private IP addresses.
