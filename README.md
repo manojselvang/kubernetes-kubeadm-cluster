@@ -553,7 +553,9 @@ sudo kubeadm join 10.0.1.15:6443 \
   --token <token> \
   --discovery-token-ca-cert-hash sha256:<hash>
 ```
-Ensure to run the above commadn with `sudo`. Else it will throw error. `[ERROR IsPrivilegedUser]: user is not running as root`.
+Ensure to run the above command with `sudo`. Else it will throw below error. 
+
+`[ERROR IsPrivilegedUser]: user is not running as root`.
 
 Then repeat the same process on `k8s-worker-2`.
 
